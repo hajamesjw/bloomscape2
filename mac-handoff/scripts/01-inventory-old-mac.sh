@@ -29,7 +29,7 @@ code()    { printf '```%s\n' "${1:-}" >> "$R"; cat >> "$R"; printf '```\n' >> "$
   echo "- Generated: $(date -Iseconds)"
   echo "- macOS: $(sw_vers -productVersion) ($(uname -m))"
   echo "- User: $USER   Home: $HOME"
-  echo "- Role: **ops Mac** — runs scheduled/daily routines and inbox triage"
+  echo "- Role: **ops-mac** — runs scheduled/repeat routines; produces into _inbox/ops-mac and Daily/. studio-mac (new Mac) is primary and does the filing."
 } > "$R"
 
 section "Claude Code"

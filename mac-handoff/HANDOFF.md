@@ -4,7 +4,7 @@ _Written 2026-10-17 from a Claude cloud session (claude.ai account hajamesjw@gma
 
 ## 0. The decision in one paragraph
 
-Two Macs share **one cloud-synced folder, `~/Claude`**, fully downloaded on both. The **old Mac is `ops-mac`**: it runs scheduled and repeat processes (daily routines, inbox triage, reports). The **new Mac is `studio-mac`**: new projects and creative work. Both can run at the same time without colliding because the folder is laid out so each machine writes to its own places (per-machine `_inbox/`, per-project `Owner:` field, dated append-only outputs), and because **code never lives in the synced folder**: repos go in `~/Code` on each machine and sync through GitHub. Claude Code's shared customisations (skills, agents, commands, rules) live in the workspace at `_claude/` and are symlinked into `~/.claude` on both machines; everything else in `~/.claude` (sessions, auth, caches) stays per machine.
+Two Macs share **one cloud-synced folder, `~/Claude`**, fully downloaded on both. The **new Mac is `studio-mac` and is primary**: new projects, creative work, and ownership of the folder structure, including the inbox triage that decides how new material folds in. The **old Mac is `ops-mac`**: it runs scheduled and repeat processes (daily routines, reports, captures) and only *produces* into its own inbox and dated `Daily/` folders; it never reorganises. Both can run at the same time without colliding because the folder is laid out so each machine writes to its own places (per-machine `_inbox/`, per-project `Owner:` field, dated append-only outputs), and because **code never lives in the synced folder**: repos go in `~/Code` on each machine and sync through GitHub. Claude Code's shared customisations (skills, agents, commands, rules) live in the workspace at `_claude/` and are symlinked into `~/.claude` on both machines; everything else in `~/.claude` (sessions, auth, caches) stays per machine.
 
 ## 1. What transfers automatically vs. what you must redo
 
@@ -47,7 +47,7 @@ Also account-level: claude.ai Skills (docs, google-workspace, computer-use, chro
 3. `MACHINE=ops-mac bash mac-handoff/scripts/03-create-workspace.sh` — creates `<cloud>/Claude` from the template, links `~/Claude`, tags the machine, links `~/.claude/{skills,agents,commands,rules}` into the workspace.
 4. `bash mac-handoff/scripts/01-inventory-old-mac.sh` — writes `~/Claude/_handoff/ops-mac/INVENTORY.md`.
 5. Move your existing Claude folder's content into the new layout (`Companies/<Company>/Projects/<Project>/…`). Do this with Claude: open a terminal in `~/Claude` and ask it to file `~/Documents/Claude` into the new structure, one company at a time. Move any git repos to `~/Code` and leave a `REPO.md` behind.
-6. Set up the daily routine (section 6).
+6. Set up the scheduled routines that stay here (section 6).
 
 **On the new Mac (studio-mac):**
 1. `bash mac-handoff/scripts/02-bootstrap-new-mac.sh` — Homebrew, git, node, Claude Code, Claude desktop, gh, 1Password CLI, uv, and the `Brewfile` from the inventory if present.
@@ -56,6 +56,7 @@ Also account-level: claude.ai Skills (docs, google-workspace, computer-use, chro
 4. Grant macOS permissions (section 5).
 5. `cd ~/Claude && claude`, log in, then: _"Read CLAUDE.md and `_handoff/ops-mac/INVENTORY.md`. For each MCP server listed, give me the `claude mcp add` command; for each secret, tell me which Keychain/1Password item to re-enter."_
 6. Re-add MCP servers with `claude mcp add …` (user scope), re-enter keys, test one call each (Neon: list projects; Steady: read-only lookup).
+7. Run `/triage-inbox` in `~/Claude` for the first time; from now on this Mac decides where things go.
 
 ## 4. Which cloud, and how to keep two machines from colliding
 _(research-backed section — see RESEARCH.md for sources)_
@@ -66,7 +67,7 @@ RESEARCH_SYNC_PLACEHOLDER
 
 RESEARCH_PERMS_PLACEHOLDER
 
-## 6. The daily routine on ops-mac
+## 6. Scheduled routines on ops-mac, triage on studio-mac
 
 RESEARCH_ROUTINE_PLACEHOLDER
 

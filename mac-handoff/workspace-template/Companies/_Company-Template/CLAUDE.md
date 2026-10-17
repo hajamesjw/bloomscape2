@@ -20,7 +20,7 @@
 - Things never to do without asking (send mail, move money, post publicly)
 - Data-handling constraints (PHI, PII, contracts)
 
-## Recurring routines (run on ops-mac)
+## Recurring routines (run on ops-mac; outputs land in Daily/YYYY-MM-DD/ or _inbox/ops-mac/)
 | Routine | When | Output goes to |
 |---------|------|----------------|
 

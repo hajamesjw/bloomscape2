@@ -3,10 +3,10 @@
 You are inside the shared Claude workspace. It is one folder, cloud-synced and fully
 downloaded on two Macs that may both be working at the same time:
 
-| Machine     | Role                                                     | Writes to                         |
-|-------------|----------------------------------------------------------|-----------------------------------|
-| ops-mac     | repeat processes: daily routines, inbox triage, reports  | `_inbox/ops-mac/`, `Companies/*/Daily/` |
-| studio-mac  | new / creative work, new projects, builds                | `_inbox/studio-mac/`, project folders it owns |
+| Machine     | Role                                                                 | Writes to                         |
+|-------------|----------------------------------------------------------------------|-----------------------------------|
+| studio-mac  | **primary.** New / creative work, new projects, builds. Owns the folder structure and runs the inbox triage that folds new things in. | `_inbox/studio-mac/`, project folders it owns, anywhere during triage |
+| ops-mac     | repeat processes: scheduled routines, reports, captures. Produces; does not reorganise. | `_inbox/ops-mac/`, `Companies/*/Daily/YYYY-MM-DD/`, `LOG.md` appends |
 
 Which machine am I on? Run `cat ~/.claude-machine` (contains `ops-mac` or `studio-mac`).
 
@@ -49,7 +49,8 @@ Claude/
 5. **If you see a file named `* (conflicted copy)*`, `*-conflict*`, or `* 2.md`**, stop and
    reconcile it by hand before continuing: both versions are kept by the sync client, nothing is lost.
 6. **Inbox hygiene.** Anything created without a clear home goes in `_inbox/<machine>/`.
-   The ops-mac daily triage routine files it into Companies/… and clears the inbox.
+   The **studio-mac** triage (`/triage-inbox`) reads both inboxes, decides where each item belongs,
+   files it into Companies/… and clears the inbox. ops-mac never reorganises; it only produces.
 
 ## Conventions
 
