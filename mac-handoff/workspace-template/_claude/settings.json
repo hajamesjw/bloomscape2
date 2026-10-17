@@ -1,0 +1,15 @@
+{
+  "$comment": "Shared Claude Code user settings. Symlinked to ~/.claude/settings.json on both Macs. Machine-specific overrides go in ~/.claude/settings.local.json (not synced).",
+  "permissions": {
+    "allow": [
+      "Read", "Glob", "Grep",
+      "Bash(ls:*)", "Bash(cat:*)", "Bash(find:*)", "Bash(git status:*)", "Bash(git log:*)", "Bash(git diff:*)"
+    ],
+    "deny": [
+      "Read(./**/.env)", "Read(./**/.env.*)", "Read(~/.ssh/**)",
+      "Bash(rm -rf:*)", "Bash(git push --force:*)"
+    ],
+    "additionalDirectories": ["~/Claude"]
+  },
+  "cleanupPeriodDays": 60
+}
